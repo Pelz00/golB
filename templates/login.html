@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  {%with messages = get_flashed_messages(with_categories=true)%}
+    {%for category, message in messages%}
+      <div class="flash {{category}}">{{message}}</div>
+    {%endfor%}
+   {%endwith%}   
+
+ <p class="font-bold text-2xl text-white mt-10 ml-6">Welcome To Login Page</p>
+    <div class="flex flex-col justify-between border-2 border-white w-96 p-2 rounded-xl m-auto h-fit mt-6">
+    <form action="" method="post" enctype="multipart/form-data" class="w-full bg-blue-100 p-5 rounded-xl">
+    <label for="email">Email:</label><br>
+    <input type="email" placeholder="Enter your email" name="email" class="border-2 border-blue-600 rounded-xl py-2 pl-4 outline-none w-full"> <br><br>
+    <label for="password">Password:</label><br>
+    <input type="password" placeholder="*******" name="password" class="border-2 border-blue-600 rounded-xl py-2 pl-4 outline-none w-full"> <br><br>
+    <input type="checkbox" name="remember"> Remember <br>
+
+        <button class="bg-blue-500 hover:bg-blue-300 hover:text-black cursor-pointer transition duration-700 text-white w-full py-2 rounded-xl mt-6">Submit</button>
+   
+    </form>
+    </div>
+    <div class="flex justify-self-center mt-10">
+        <p class="font-bold text-white">not registered ? </p> 
+        <a href="/register"> <button class="cursor-pointer ml-2 hover:underline">register here</button></a>
+    </div>
+
+{% endblock %}  

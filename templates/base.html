@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='/index.css')}}">
+    <script src="{{ url_for('static',filename='javascript/index.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+<div class="flex flex-col justify-between bg-blue-300 min-h-screen">
+
+  <div>
+    <nav class="bg-blue-400 w-screen flex justify-between items-center py-3 px-12">
+        <h1 class="font-mono text-2xl tracking-[-3px]">📰 Blog</h1>
+        <ul class="flex gap-3 items-center">
+            <a class="bg-transparent hover:bg-blue-600 transition duration-700 py-1 px-3 rounded cursor-pointer" href="{{ url_for('blogs') }}">
+                <li>Home</li>
+            </a>
+            <a class="bg-transparent hover:bg-blue-600 transition duration-700 py-1 px-3 rounded cursor-pointer" href="{{ url_for('add_blog') }}">
+                Add blog
+            </a>
+
+            {% if current_user.is_authenticated %}
+                <a href="/logout">
+                    <button class="bg-[#000] hover:bg-[#292a2d] text-white py-2 px-3 rounded-xl cursor-pointer">
+                        Logout
+                    </button>
+                </a>
+            {% else %}
+                <a href="/login">
+                    <button class="bg-blue-300 hover:bg-blue-600 transition duration-700 py-1 px-3 rounded cursor-pointer text-white">
+                        Login
+                    </button>
+                </a>
+            {% endif %}
+        </ul>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+  </div>
+
+    <footer class="bg-black py-2 text-white">
+        <p class="foot py-2" style="text-align: center;">&copy; 2026 My_flask App. All rights reserved.</p>
+    </footer>
+
+</div>
+</body>
+</html>

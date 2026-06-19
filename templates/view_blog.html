@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+{% with messages = get_flashed_messages()%}
+   {%if messages%}
+   {%for message in messages%}
+   <div class="flex justify-end absolute right-[50px] mr-[20px] mt-2">
+     <h4 class="alert flash-msg">{{message}}</h4>
+   </div>
+   {%endfor%}
+   {%endif%}
+   {%endwith%}
+<div class="centered w-screen md:px-28">
+    <h1 class="text-2xl m-5">Blog page</h1>
+    <div class="flex flex-col justify-center items-center mx-4">
+        <img class="rounded" src="{{url_for('static', filename='uploads/' + blog.image)}}"/>
+        <div class="mt-5 bg-white p-5 rounded">
+            <p class="font-bold text-xl font-serif">Title: <span class="underline">{{blog.title}}</span> </p>
+            <p class="font-bold text-xl font-serif">Content: </p> <span class="text-[15px] tracking-[1px] font-serif">{{blog.content}}</span> 
+        </div>
+
+        <div class="flex gap-3 items-center my-5">
+            <a href="/updateblog/{{blog._id}}">
+                <button class="bg-blue-600 hover:bg-blue-300 transition duration-700 py-1 px-3 rounded cursor-pointer">Edit Blog</button>
+
+             <a href="/delete/{{blog._id}}">
+               <button class="bg-blue-600 hover:bg-blue-300 transition duration-700 py-1 px-3 rounded cursor-pointer">delete</button> 
+             </a>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

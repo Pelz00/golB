@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="mx-4">
+    <h1 class="text-2xl m-5">Edit blog</h1>
+    <form method="post" enctype="multipart/form-data" class="w-full md:w-[50vw] bg-blue-100 p-5 rounded-xl mb-5 m-auto">
+        <label for="title">Title:</label><br>
+        <input type="text" name="title" value="{{blog.title}}" cols="50" class="border-2 border-blue-400 rounded-xl py-2 pl-4 outline-none w-full"> <br><br>
+        <label for="content">Content:</label>
+        <legend>
+       <textarea name="content" placeholder="Contents goes here" cols="50" rows="15" class="border-2 border-blue-400 rounded-xl py-2 pl-4 outline-none w-full">{{blog.content}}</textarea>
+        </legend> <br>
+        <img class="w-85" src="{{url_for('static', filename='uploads/' + blog.image)}}"/>
+        <input type="file" name="image" value="{{blog.image}}" class="bg-red-200 hover:bg-black  text-white font-serif transition duration-700 mt-2 w-fit p-1 cursor-pointer"> 
+        <br><br>
+        <button class="bg-blue-500 hover:bg-blue-300 hover:text-black cursor-pointer transition duration-700 text-white py-2 px-6 rounded-xl mt-6">Update</button>
+    </form>
+</div>
+{% endblock %}

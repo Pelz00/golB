@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+{% with messages = get_flashed_messages()%}
+   {%if messages%}
+   {%for message in messages%}
+   <div class="flex justify-end absolute right-[50px] mr-[20px] mt-2">
+     <h4 class="alert flash-msg">{{message}}</h4>
+   </div>
+   {%endfor%}
+   {%endif%}
+   {%endwith%}
+
+
+<h1 class="text-2xl m-5"><i>Blogs:</i> {{total}}</h1>
+ <div class="flex gap-4 justify-start items-center flex-wrap md:mx-10">
+        {% for blog in blogs %}
+        <div class="w-full  md:w-80 m-auto text-white min-h-[50vh] border-2 border-white p-2 rounded-xl">
+           <img class="w-full h-56 opacity-100 disabled:opacity-75 rounded-xl" src="{{url_for('static', filename='uploads/' + blog.image) }}" alt="">
+            <div class="bg-black mt-3 h-36 p-2 flex flex-col justify-between rounded-xl">
+              <p class="font-bold underline"><span>Title:</span> {{blog.title}}</p>
+              <a href="/viewblog/{{blog.title}}">
+               <button class="bg-blue-600 hover:bg-blue-300  transition duration-700 py-1 px-3 rounded cursor-pointer">view blog</button>  
+              </a>
+            </div>
+            <div class="">{{ blog.date_posted.strftime('%B %d, %Y') }}</div>
+        </div>
+        {% endfor %}
+    </div>
+ 
+{% endblock %}    

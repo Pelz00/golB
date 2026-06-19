@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="mx-3">
+    <h1 class="text-2xl m-5 font-bold">Add page</h1>
+    <form method="post" enctype="multipart/form-data" class="w-full md:w-96 bg-blue-100 p-5 rounded-xl mb-5 m-auto">
+        <label for="title">Title:</label><br>
+        <input type="text" name="title" placeholder="Add title" class="border-2 border-blue-600 rounded-xl py-2 pl-4 outline-none w-full"> <br><br>
+        <label for="content">Content:</label>
+        <legend>
+            <textarea name="content" placeholder="Contents goes here" cols="50" rows="15" class="border-2 border-blue-600 rounded-xl py-2 pl-4 outline-none w-full"></textarea> <br>
+        </legend>
+        <input type="file" name="image"> <br><br>
+        <button class="bg-blue-500 hover:bg-blue-300 hover:text-black cursor-pointer transition duration-700 text-white w-full py-2 rounded-xl mt-6">Post</button>
+    </form>
+</div>
+{% endblock %}
