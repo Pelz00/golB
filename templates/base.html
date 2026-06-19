@@ -21,6 +21,9 @@
             <a class="bg-transparent hover:bg-blue-600 transition duration-700 py-1 px-3 rounded cursor-pointer" href="{{ url_for('add_blog') }}">
                 Add blog
             </a>
+            <a class="bg-transparent hover:bg-blue-600 transition duration-700 py-1 px-3 rounded cursor-pointer" href="{{ url_for('dashboard') }}">
+                Dashboard
+            </a>
 
             {% if current_user.is_authenticated %}
                 <a href="/logout">

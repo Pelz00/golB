@@ -68,14 +68,14 @@ def load_user(user_id):
 
 
 # ── DASHBOARD — public, shows ALL blogs ──────────────────────────────────────
-@app.route('/dashboard')
+@app.route('/')
 def dashboard():
     all_blogs = Blogs.query.order_by(Blogs.date_posted.desc()).all()
     return render_template('dashboard.html', blogs=all_blogs, total=len(all_blogs))
 
 
 # HOME — only shows the current user's blogs
-@app.route('/')
+@app.route('/home')
 @login_required
 def blogs():
     user_blogs = Blogs.query.filter_by(user_id=current_user.id).all()
